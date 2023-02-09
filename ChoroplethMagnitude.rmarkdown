@@ -65,7 +65,9 @@ csl: taylor-and-francis-harvard-x.csl #citation stylesheet
 
 ---
 
+
 REDO:
+
 ```{r} 
 #| label: setup
 knitr::opts_chunk$set(echo = FALSE)
@@ -93,7 +95,6 @@ library(emmeans)
 library(knitr)
 library(effectsize)
 ```
-
 
 ```{r} 
 #| label: data-wrangling
@@ -217,6 +218,7 @@ passed <- anon_database %>%
 both <- anon_database %>%
   filter(item_type == "E") 
 ```
+
 
 ```{r} #| label: comparison-function, include=FALSE}
 # this function takes a model and creates a new model for anova comparison
@@ -352,12 +354,14 @@ Choropleth maps employ colors to represent values and are typically used to conv
 Indeed, choropleth maps displaying overall magnitudes have been used in practice. @fig-DFP-example depicts data concerning public support for a federal ban on abortion in the U.S. The accompanying color legend presents the entire range of possible values: from 0\% to 100\% support. Since plotted values do not exceed 30\%, their magnitudes appear small, in context. In addition, whereas a typical color scale would amplify differences between regions, this design presents variability between states as low. This lends credibility to the notion that, for this aspect of a divisive issue, public support is consistently low across the U.S.
 
 
+
 ```{r}
 #| label: fig-DFP-example
 #| fig-cap: A choropleth map displaying data from an analysis of state-level public support for a federal ban on abortion in the U.S [@fischer_federal_2021]. The color legend employs a diverging blue-red color palette, with white in the center, showing the full range of possible values. The 30% point is marked with a dotted line and labeled to indicate that no state exceeds this level of support. Reproduced with permission.
 #| fig-alt: A choropleth map of the U.S. with the title 'There is not a single state where support for a federal ban on abortion has more than 30 percent support among the public'. The color legend employs a diverging blue-red color palette, with white in the center, showing the full range of possible values. Each state is colored one of several shades of light blue. The 30 percent point is marked with a dotted line and labeled to indicate that no state exceeds this level of support.
 knitr::include_graphics("examples/dfp.png")
 ```
+
 
 This paper explores cognitive processing of overall magnitude in choropleth maps. Through an empirical study, we demonstrate that color legends, which depict the mapping between colors and numerical values, can imply whether plotted values are large or small. Even when the mapping between color and numerical value remains the same, the range of the color legend provides a crucial source of context. The relationship between this range and the plotted data influences viewers' interpretations of magnitude.
 
@@ -409,6 +413,7 @@ We predicted that urgency ratings would be higher for truncated legends, compare
 
 In each trial, we independently manipulated two aspects of the choropleth map. When the color legend had a *truncated range*, its upper bound was equal to the maximum value displayed in the map. When the color legend had an *extended range*, its upper bound was equal to double the maximum value (and the maximum value displayed in the map appeared at the legend's halfway point). Numerical labels on the color legend were either *present* or *absent*. This resulted in four unique combinations of conditions. We employed a Latin-squared design, ensuring that each participant was exposed to each combination of conditions throughout the experiment, but only saw one combination for each given map. There were a total of 54 trials (48 experimental trials, six attention check trials). Example stimuli are shown in Figure @fig-example-stimuli.
 
+
 ```{r}
 #| label: fig-example-stimuli
 #| fig-cap: "Example stimuli: six choropleth maps showing fictitious pollution data. Four color legends are displayed below each map, but only one color legend accompanied the map in each trial. Color legends with extended ranges have a maximum value equal to double the maximum plotted value (top row: 400; bottom row: 1800). Color legends with truncated ranges have a maximum value equal to the maximum plotted value in the map (top row: 200; bottom row: 900). During the experiment, all six color scales were used in conjunction with all maximum values."
@@ -419,13 +424,12 @@ img2 <- ggplot() + background_image(image_read("examples/supermap_bottom.png")) 
 img1 / img2 + plot_layout()
 ```
 
-
-
-
-
 {{< pagebreak >}}
+
+
 
 # References {.unnumbered}
 
 ::: {#refs}
 :::
+
