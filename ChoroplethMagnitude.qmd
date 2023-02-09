@@ -1,7 +1,81 @@
 ---
-title: "ChoroplethMagnitude"
+title: "Choropleth Maps Can Convey Magnitude Through the Range of the Accompanying Color Legend"
+format:
+  tandf-pdf:
+    keep-tex: true  
+  tandf-html: default
+  
+mainfont: Verdana
+
+execute:
+  warning: false
+  message: false
+  
+author:
+  - name: Duncan Bradley
+    affiliations:
+      - ref: PCHN
+    orcid: 
+    email: duncan.bradley@manchester.ac.uk
+  - name: Boshuo Zhang
+    affiliations:
+      - ref: CS
+  - name: Caroline Jay
+    affiliations:
+      - ref: CS
+  - name: Andrew J. Stewart
+    affiliations:
+      - ref: CS
+      
+affiliations:
+  - id: PCHN
+    name: The University of Manchester
+    department: Division of Psychology, Communication, and Human Neuroscience
+    address: Oxford Road
+    city: Manchester
+    country: UK
+    postal-code: M13 9PL
+    
+  - id: CS
+    name: The University of Manchester
+    department: Department of Computer Science
+    address: Oxford Road
+    city: Manchester
+    country: UK
+    postal-code: M13 9PL
+    
+abstract: |
+  Data visualization software provides the ability to create highly customizable choropleth maps. This presents an abundance of design choices. The color legend, one particular aspect of choropleth map design, has the potential to effectively convey data points' magnitudes (how large or small they are). Color legends present the mapping between a specific range of colors and a specific range of numerical values. In this experiment, we demonstrate that manipulating this range affects interpretations of the magnitude of plotted values. Participants (N = 100) judged the urgency of addressing pollution levels as greater when the color legend's upper bound was equal to the maximum plotted value, compared to when it was significantly larger than the maximum plotted value. This provides insight into the cognitive processing of plotted data in choropleth maps that are designed to promote inferences about overall magnitude.
+
+keywords: 
+  - template
+  - demo
+  
+#bibliography: bibliography.bib 
+#csl: nature.csl #citation stylesheet
+
 ---
 
-## Quarto
+# Introduction {#sec-intro}
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+To make sense of statistics presented in newspaper articles or scientific reports, it is often important to interpret their meaning in context. This may involve determining whether the presented values represent large or small numbers. Data visualizations are often used to convey statistics, so understanding how these tools may communicate data points' magnitudes is crucial.
+
+Choropleth maps employ colors to represent values and are typically used to convey spatial variability. In order to aid discrimination and facilitate identification of spatial patterns, values are often encoded using the entire range of the chosen color palette. Thus, the range of values on the accompanying color legend typically consists of only those values which were observed. However, this is not the only application for a choropleth map. In certain cases, displaying values' *absolute* magnitudes may be considered more pertinent than displaying their *relative* magnitudes. This would allow a viewer to gauge, on the whole, how large or small presented values are, in context. To communicate this, the range of values on the accompanying color legend may include values which were not observed but remain relevant nonetheless. Designers may wish to sacrifice discrimination ability for an overt display of magnitude, in order to convey their intended message.
+
+Indeed, choropleth maps displaying overall magnitudes have been used in practice. @fig-DFP-example depicts data concerning public support for a federal ban on abortion in the U.S. The accompanying color legend presents the entire range of possible values: from 0\% to 100\% support. Since plotted values do not exceed 30\%, their magnitudes appear small, in context. In addition, whereas a typical color scale would amplify differences between regions, this design presents variability between states as low. This lends credibility to the notion that, for this aspect of a divisive issue, public support is consistently low across the U.S.
+
+
+```{r}
+#| label: fig-DFP-example
+#| fig-cap: A choropleth map displaying data from an analysis of state-level public support for a federal ban on abortion in the U.S \\citep{fischer_federal_2021}. The color legend employs a diverging blue-red color palette, with white in the center, showing the full range of possible values. The 30\\% point is marked with a dotted line and labeled to indicate that no state exceeds this level of support. Reproduced with permission.
+#| fig-alt: A choropleth map of the U.S. with the title 'There is not a single state where support for a federal ban on abortion has more than 30 percent support among the public'. The color legend employs a diverging blue-red color palette, with white in the center, showing the full range of possible values. Each state is colored one of several shades of light blue. The 30 percent point is marked with a dotted line and labeled to indicate that no state exceeds this level of support.
+knitr::include_graphics("examples/dfp.png")
+```
+
+
+{{< pagebreak >}}
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
