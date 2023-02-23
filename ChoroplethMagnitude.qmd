@@ -1,13 +1,11 @@
 ---
 title: "Choropleth Maps Can Convey Magnitude Through the Range of the Accompanying Color Legend"
 
-# useful stuff here:  https://quarto.org/docs/reference/cells/cells-knitr.html#cache 
 knitr:
   opts_chunk: 
     cache_comments: false
   
 format:
-  pdf: default
   tandf-pdf:
     keep-tex: true  
 
@@ -57,8 +55,10 @@ abstract: |
   Data visualization software provides the ability to create highly customizable choropleth maps. This presents an abundance of design choices. The color legend, one particular aspect of choropleth map design, has the potential to effectively convey data points' magnitudes (how large or small they are). Color legends present the mapping between a specific range of colors and a specific range of numerical values. In this experiment, we demonstrate that manipulating this range affects interpretations of the magnitude of plotted values. Participants (N = 100) judged the urgency of addressing pollution levels as greater when the color legend's upper bound was equal to the maximum plotted value, compared to when it was significantly larger than the maximum plotted value. This provides insight into the cognitive processing of plotted data in choropleth maps that are designed to promote inferences about overall magnitude.
 
 keywords: 
-  - template
-  - demo
+  - visualisation
+  - cognition
+  - colour
+  - framing effect
   
 bibliography: bibliography.bib 
 csl: taylor-and-francis-harvard-x.csl #citation stylesheet
@@ -917,6 +917,14 @@ The present experiment contributes to our understanding of cognitive mechanisms 
 # Conclusion
 
 Understanding the consequences of design choices is crucial for understanding how to present data effectively. In choropleth maps, the upper bound of the accompanying color legend influences how large or small plotted values appear to viewers. Data points' proximity to the upper bound increases impressions of their magnitude. This finding provides insight into the processing of choropleth maps designed to convey overall magnitude, and promotes use of a suitable range of values on a color legend.
+
+# Acknowledgements {.unnumbered}
+
+This work was supported by the Economic and Social Research Council under Grant ES/P000665/1.  
+
+# Disclosure Statement {.unnumbered}
+
+The authors report there are no competing interests to declare.
 
 {{< pagebreak >}}
 
