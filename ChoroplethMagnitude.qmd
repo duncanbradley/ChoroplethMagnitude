@@ -22,17 +22,20 @@ author:
   - name: Duncan Bradley
     affiliations:
       - ref: PCHN
-    orcid: 
+    orcid: https://orcid.org/0000-0001-7328-8779 
     email: duncan.bradley@manchester.ac.uk
   - name: Boshuo Zhang
     affiliations:
       - ref: CS
+    orcid: https://orcid.org/0000-0003-0477-9122
   - name: Caroline Jay
     affiliations:
       - ref: CS
+    orcid: https://orcid.org/0000-0002-6080-1382
   - name: Andrew J. Stewart
     affiliations:
       - ref: CS
+    orcid: https://orcid.org/0000-0002-9795-4104 
       
 affiliations:
   - id: PCHN
@@ -402,7 +405,7 @@ To control for the possibility that participants used the color legend's numeric
 
 ## Pre-Registration
 
-We predicted that urgency ratings would be higher for truncated legends, compared to extended legends. In addition, we planned to compare whether any difference between these two conditions was moderated by the presence or absence of numerical labels, but made no predictions about existence or direction of any main effect or interaction. Participants completed Garcia-Retamero et al.'s [@garcia-retamero_measuring_2016] Subjective Graph Literacy scale, therefore we also planned to test whether any observed effects (or lack of) could be explained by differences in data visualization literacy. This five-item scale is a quick, reliable measure that is correlated with scores on Galesic and Garcia-Retamero's [@galesic_graph_2011] test-based measure of data visualization literacy. The pre-registration, plus materials, data and analysis code are available at <https://osf.io/qe9hf/?view_only=32c420d6ef6c45b1ae2d3dc42dc6fe69>.
+We predicted that urgency ratings would be higher for truncated legends, compared to extended legends. In addition, we planned to compare whether any difference between these two conditions was moderated by the presence or absence of numerical labels, but made no predictions about existence or direction of any main effect or interaction. Participants completed Garcia-Retamero et al.'s [@garcia-retamero_measuring_2016] Subjective Graph Literacy scale, therefore we also planned to test whether any observed effects (or lack of) could be explained by differences in data visualization literacy. This five-item scale is a quick, reliable measure that is correlated with scores on Galesic and Garcia-Retamero's [@galesic_graph_2011] test-based measure of data visualization literacy. The pre-registration, plus materials, experiment script, data and analysis code are available at <https://osf.io/qe9hf/?view_only=32c420d6ef6c45b1ae2d3dc42dc6fe69>. This repository contains the requisite resources to generate a fully-reproducible version of this paper.
 
 ## Design
 
@@ -496,7 +499,7 @@ Following the final trial, participants were informed that both the data present
 
 ## Materials
 
-Materials were generated using Python (version 3.9.12). Matplotlib (version 3.5.1) was used to generate color legends and geoplot (version 0.5.1) was used for plotting geospatial data. A link to a repository containing the script used to generate the materials has been excluded from this manuscript for anonymization purposes.
+Materials were generated using Python (version 3.9.12). Matplotlib (version 3.5.1) was used to generate color legends and geoplot (version 0.5.1) was used for plotting geospatial data.
 
 Each visualization contained a unique combination of four neighboring Chinese provinces (except the six attention check items, which employed six existing combinations used in the experimental items). China was chosen to reduce the potential impact of prior knowledge, as Prolific's participants tend to be located outside China. However, the choice of country was not disclosed to participants and regions were not labeled. The pollution data used were entirely fictitious, as were the 'standardized units' used to present the data.
 
@@ -506,7 +509,7 @@ The maximum value in the plotted data ranged from 200 to 900 (in multiples of 10
 
 ## Analysis Methods
 
-Analysis was conducted in R [@r_core_team_r_2022, version 4.2.1]. A link to a Docker image has been excluded from this manuscript for anonymization purposes. This will reproduce the computational environment used for analysis, and an executable script, so that a fully-reproducible version of this paper can be generated.
+Analysis was conducted in R [@r_core_team_r_2022, version 4.2.1].
 
 Linear mixed-effects models were constructed using lme4 [@bates_fitting_2015, version 1.1.31]. Random effects structures were determined using buildmer [@voeten_buildmer_2022, version 2.7], which after identifying the most complex random effects structure that could successfully converge [see @barr_random_2013], then removed random effects terms which did not significantly contribute towards explaining variance. In a diversion from the pre-registered analysis plan, we excluded the interaction term from the models used to test the main effects of color legend range and numerical label presence.
 
@@ -700,8 +703,8 @@ There was a significant interaction between color legend range and numerical lab
 ```{r}
 #| label: fig-interaction-chart
 #| include: true
-#| fig-height: 6
-#| fig-width: 5.5
+#| fig-height: 5
+#| fig-width: 6
 #| fig-cap: Mean urgency ratings showing the interaction between color legend range and numerical label presence, displayed separately for the different samples of participants. Error bars show 95% confidence intervals around the means.
 ##| fig-alt = "A visualization with eight horizontal axes. The #top four are labeled 'Satisfied Attention Check Criteria (N = #100)'. Of these, the top two are labeled 'Truncated Upper #Bound'. These have means and error bars close to the right hand #side of the axis, with the 'Labels Absent' condition very #slightly further to the right than the 'Labels Present' #condition. The means and error bars for both 'Extended Upper #Bound' conditions are near the center of the axis. This entire #pattern of error bars in the top four axes is replicated below, #in the bottom four axes labeled 'All Participants (N = 165)'"
 # creating a named vector for range facet labels
@@ -712,7 +715,7 @@ names(ranges_labs) <- c("extend", "trunc")
 pp <- passed %>%
   ggplot(aes(x = slider.response, y = label)) +
   stat_summary(fun.data = "mean_cl_normal", 
-               color = "darkgreen", 
+               color = "grey20", 
                linewidth = 1, 
                geom = "errorbar", 
                alpha = 0.7,
@@ -737,7 +740,7 @@ pp <- passed %>%
 bp <- both %>%
   ggplot(aes(x = slider.response, y = label)) +
   stat_summary(fun.data = "mean_cl_normal", 
-               color = "darkgreen", 
+               color = "grey20",
                linewidth = 1, 
                geom = "errorbar", 
                alpha = 0.7,
@@ -753,14 +756,13 @@ bp <- both %>%
                      minor_breaks = c()) +
   labs(title = "All Participants (N = 165)",
        x = expression(paste(italic(
-         "--\"Not very urgently\"                                                                        \"Very urgently\"--"))),
+         "--\"Not very urgently\"                                                                 \"Very urgently\"--"))),
        y = NULL) +
   scale_y_discrete(breaks = c("present", "absent"),
                    labels = c("Labels Present", "Labels Absent")) +
   theme_minimal(base_size = 10) +
   theme(plot.title = element_text(vjust= -2, size = 12),
-        axis.text.x = element_text(hjust=c(0,1)),
-        axis.title.x = element_text(vjust=4.8, size = 10),
+        axis.title.x = element_text(vjust=4.5, size = 10),
         axis.ticks.length.x = unit(0.3,"cm"),
         axis.ticks.x = element_line(linewidth = 0.5, color = "grey10")) +
   facet_wrap(~ range, ncol = 1, labeller = labeller(range = ranges_labs))
