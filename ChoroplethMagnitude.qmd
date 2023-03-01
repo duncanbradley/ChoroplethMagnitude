@@ -22,20 +22,20 @@ author:
   - name: Duncan Bradley
     affiliations:
       - ref: PCHN
-    orcid: https://orcid.org/0000-0001-7328-8779 
+    orcid: 0000-0001-7328-8779 
     email: duncan.bradley@manchester.ac.uk
   - name: Boshuo Zhang
     affiliations:
       - ref: CS
-    orcid: https://orcid.org/0000-0003-0477-9122
+    orcid: 0000-0003-0477-9122
   - name: Caroline Jay
     affiliations:
       - ref: CS
-    orcid: https://orcid.org/0000-0002-6080-1382
+    orcid: 0000-0002-6080-1382
   - name: Andrew J. Stewart
     affiliations:
       - ref: CS
-    orcid: https://orcid.org/0000-0002-9795-4104 
+    orcid: 0000-0002-9795-4104 
       
 affiliations:
   - id: PCHN
@@ -425,7 +425,7 @@ img1 / img2 + plot_layout()
 
 ## Participants
 
-We recruited participants using prolific.co. The experiment was advertised to users with English language fluency, normal or corrected-to-normal vision, and no experience of color deficiency, who had previously participated in more than 100 studies on Prolific. Participants were paid £3.50. Ethical approval was granted by our institution's Ethics Committee (Ref. 2022-11115-23778).
+We recruited participants using prolific.co. The experiment was advertised to users with English language fluency, normal or corrected-to-normal vision, and no experience of color deficiency, who had previously participated in more than 100 studies on Prolific. Participants were paid £3.50. Ethical approval was granted by our The University of Manchester's Division of Neuroscience and Experimental Psychology Ethics Committee (Ref. 2022-11115-23778).
 
 In our pre-registration, we planned to exclude participants who failed more than one attention check question, in order to exclude those who were not sufficiently engaged in the task. However, when many more participants than expected failed more than one attention check question, this criteria was deemed too stringent and we instead awarded payment to all participants who returned data, regardless of their responses to attention check questions. Consequently, due to practical constraints, we were unable to obtain a sample which met our originally-specified sample size (N = 160) and our pre-registered inclusion criteria. Therefore, we terminated data collection once the sample of those who satisfied the attention check criteria was balanced across all four Latin-squaring lists (N = 100; 25 participants per list). We used this sample for our main analysis. As a compromise for the reduction in experimental power, we also demonstrate below that the pattern of effects is largely the same when analyzing the entire dataset (those who satisfied attention check criteria and those who did not; N = 165). In Section 5, we discuss a possible reason for the higher-than-expected rate of incorrect responses to attention check questions. Demographic information is shown in @tbl-demographics.
 
