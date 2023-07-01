@@ -540,14 +540,14 @@ ggplot(aes(x = slider.response, y = range)) +
                  color = "white",
                  fill = "white",
                  alpha = 0,
-                 lwd = 1.5,
+                 lwd = 1,
                  position = position_nudge(y=-.15)) +
       geom_boxplot(outlier.shape=NA,
                  width = 0.08,
                  color = "black",
                  fill = "white",
                  alpha = 0.7,
-                 lwd = 1,
+                 lwd = 0.5,
                  position = position_nudge(y=-.15)) +
   scale_x_continuous(labels = c(
     expression(paste(italic("\"Not very urgently\""))),
