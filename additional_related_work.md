@@ -24,25 +24,23 @@ Schiewe (2019) observed that assessment of values presented in choropleths are d
 
 Colormaps with more than two hues (e.g. warm-cool, or diverging palettes) were not investigated in the present experiment. This was an exeperimental design choice. Using just one color allows greater control of the stimulus, generating fewer changes between conditions. In the case of a diverging palette, it would move the midpoint. It would also change the presence an entire color, rather than just changing the intensity (luminance) of the color. However, it it could be a case for future work.
 
-Choropleth maps 102-16
-CIE LAB 253-255
-range 111-12
-legend in choropleth map 111-12
-pg 200 contains a brief overview of data types for choropleth maps, compared to other map types. 
-Dent et al. discuss many considerations for choropleth map design, recommending that ….
-
-
-* titling
-* marginalia
-* use of < and >
-
-
 Dent et al. (2008) discuss requirements for the type of data for choropleth maps. Uses datasets where each data point corresponds to a discrete area, typically defined by administrative boundaries (e.g., national or local government regions). Ratios, proportions and averages are often plotted to aid comparisons. 
+
+Dent et al. discuss many considerations for choropleth map design, recommending that ….
+Dent et al. also discuss the importance of appropriate textual accompaniments. 
 
 One of the main functions is to see geographic patterns. 
 The purpose of classifying data into discrete groups is simplification, with an express goal of illustrating the heterogeneity of dissimilar values - convey the distribution of values.
 Various classification schemes, different approaches, and indeed the decision whether to classify at all, employed depending on the data and the map’s purpose. Some, such as equal interval, are more concerned with simplicity in legend values. Others, such as natural breaks, are sensitive to the data’s distribution, employing break points that occur within the dataset, ensuring homogenous values are represented as such. Jenks’ algorithm is a formal way of identifying natural breaks.
-Unclassed choropleth maps (Tobler, 1973) do not employ discrete groups. Instead, each unique value is represented distinctly, displaying specific values more precisely.
+Unclassed choropleth maps (Tobler, 1973) do not employ discrete groups. Instead, each unique value is represented distinctly, displaying specific values more precisely, and avoiding the impression that similar values eitherside of a class boundary are substantially different (Kraak and Ormelling). 
 
-Including non-observed values (as in continuous class ranges), however, increases the chance that viewers make incorrect estimations (Dent et al., 2008), yet this is not the main purpose of visualisation. 
+Including non-observed values (as in continuous class ranges), however, increases the chance that viewers make incorrect estimations (Dent et al., 2008), yet this is not the main purpose of visualisation. The use of open-ended categories at the extremes is an additional consideration (Paul, 1997).
 
+Whilst we know that legends help people see values are largeR or smalleR, these judgements are in relation to other plotted values. We demonstrate that they can affect whether people see values as large or small, in the absence of contrasting values on the map. 
+
+Kraak and Ormeling
+Choropleth maps pg 140
+
+mention that further study should look at classified choropleths. 
+
+Extending the legend to incorporate values won’t be appropriate for every task
