@@ -1,11 +1,6 @@
 # Additional Related Work
 
-Work on legends in thematic maps
-The role of legends for developing an initial understanding, with fixation on map legends decreasing as exposure to map increased (Hepburn et al. 2021). Demonstrates building up of a cognitive representation of that information.
-Edler - Coloured dots in legend corresponding to items at different locations on a map - 
-In keeping with left-hemisphere specialised language processing, legends presented on the right are processed more quickly than those on the left. 
-Li and Qin - investigated visual search performance in legends, with a focus on formatting. Following Gestalt principles, proximity between icons and corresponding text was the most influential aspect of spacing. 
-Gołębiowska - simple task performance was similar across all three legend arrangements (list legend, grouped legend, natural legend), but user preferences depend on legends’ suitability for specific tasks.
+
 Dykes et al illustrate several creative ways of designing map legends, e.g. using information visualisation techniques such as bar chart or treemap, dynamic legends showing only relevant information, illustrating that conventional implemetations are not the only options.  
 Choropleth maps outperformed maps with graduated symbols and isoline maps in a range of basic tasks, and were also participnats’ preferred option (Słomska-Przech and Gołębiowska (2021)
 There have been various other attemps to design alternative legends (e.g. ogive-based, Cromley and Ye; histogram-based, Kumar; uncertainty-capturing, Rechtless and Brewer). However, all of these have used the entire range of the data. 
@@ -44,3 +39,10 @@ Choropleth maps pg 140
 mention that further study should look at classified choropleths. 
 
 Extending the legend to incorporate values won’t be appropriate for every task
+
+Studies manipulating the design of legends for other types of maps have illustrating how cognitive processing of a legend influences use of maps. 
+Li and Qin (2014) - investigated visual search performance in legends, with a focus on formatting. Following Gestalt principles, proximity between icons and corresponding text was the most influential aspect of spacing. 
+Gołębiowska (2015)- simple task performance was similar across all three legend arrangements (list legend, grouped legend, natural legend), but user preferences depend on legends’ suitability for specific tasks.
+Edler et al. (2020) - Coloured dots in legend corresponding to items at different locations on a map - In keeping with left-hemisphere specialised language processing, legends presented on the right are processed more quickly than those on the left. 
+The role of legends for developing an initial understanding, with fixation on map legends decreasing as exposure to map increased (Hepburn et al. 2021). Demonstrates building up of a cognitive representation of that information.
+This demonstrates that the design of the map itself is not the only thing that influences the information exctracted from a cartographic display. The design of legend affects how people interpret, interact with, the map, and good legend design will facilitate cognitive processing.
