@@ -21,11 +21,6 @@ contributes:
       # Content to add in header that your format is using
       header-includes: |
         \usepackage{orcidlink}
-        \usepackage{soul}
-        \usepackage{xcolor}
-        \definecolor{highlighter}{HTML}{FFFF66}
-        \sethlcolor{highlighter}
-        \newcommand{\rev}[1]{\hl{#1}}
       template-partials:
         # Add here the partials your format is using
         - "partials/title.tex"
@@ -36,6 +31,8 @@ contributes:
         # Add here the resources required for the PDF rendering
         - interact.cls
         - orcidlink.sty
+      include-in-header: 
+        - highlight.tex
     html:
       # define default configuration for the html version of your format
       toc: true
