@@ -369,6 +369,8 @@ This paper explores cognitive processing of overall magnitude in choropleth maps
 
 **Dykes et al (2010) explore several creative approaches to map legend design, providing alternatives to conventional implemetations. One such design, displaying statistical information within a legend, has been implemented in various forms, for communicating distributions (Cromley and Ye, Kumar) and uncertainty (Rechtless and Brewer) in choropleth maps.**
 
+**Regarding the minimum and maximum values used as labels for each discrete color, two options are available. Continuous class ranges include non-observed values to create a continuous sequence of numbers. This provides consistency when re-using a legend for multiple maps. However, this may increase the chance that viewers make imprecise estimations of specific values, compared to non-continuous class ranges which include only observed values (Dent et al., 2008). The use of open-ended categories at a legend’s extremes (Paul, 1997) is an additional consideration, generating a similar generalisability-precision trade-off.**
+
 ## Communicating Magnitude Through Data Visualization
 
 Empirical studies in various scientific fields have explored how interpretations of magnitude are influenced by data visualization design choices.
