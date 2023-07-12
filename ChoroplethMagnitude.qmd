@@ -359,6 +359,8 @@ Indeed, choropleth maps displaying overall magnitudes have been used in practice
 knitr::include_graphics("examples/dfp.png")
 ```
 
+**The map may appear patternless, but choropleth maps present opportunities for conveying information *beyond* geographical differences, just as line charts may show stagnant wages. By presenting a wider numerical context, the accompanying legend imbues the map with meaning, illustrating low variability and small magnitudes. The simplicity of this message does not preclude its visualisation, since aiding memorability, engagement and comprehension are also goals, and it’s not just complex patterns that need to be displayed. As well as illuminating complex patterns, data visualisations are also designed to improve retention and engagement (Bertini), and support cognition (Hegarty).**
+
 This paper explores cognitive processing of overall magnitude in choropleth maps. Through an empirical study, we demonstrate that color legends, which depict the mapping between colors and numerical values, can imply whether plotted values are large or small. Even when the mapping between color and numerical value remains the same, the range of the color legend provides a crucial source of context. The relationship between this range and the plotted data influences viewers' interpretations of magnitude.
 
 # Related Work
