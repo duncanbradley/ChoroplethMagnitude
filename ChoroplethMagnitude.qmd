@@ -516,7 +516,7 @@ Materials were generated using Python (version 3.9.12). Matplotlib (version 3.5.
 
 Each visualization contained a unique combination of four neighboring Chinese provinces (except the six attention check items, which employed six existing combinations used in the experimental items). China was chosen to reduce the potential impact of prior knowledge, as Prolific's participants tend to be located outside China. However, the choice of country was not disclosed to participants and regions were not labeled. The pollution data used were entirely fictitious, as were the 'standardized units' used to present the data.
 
-The maximum value in the plotted data ranged from 200 to 900 (in multiples of 100), and the values for the other three provinces were between 10 and 30 units below this maximum value. Six Matplotlib color scales ('Reds', 'Greys', 'Purples', 'Blues', 'Greens', 'Oranges') were each used once per maximum value. **Sequential scales were used for simplicity, avoiding additional differences between conditions, such as the relative amounts of different hues or midpoints' positions. @tbl-colors shows the colors**
+The maximum value in the plotted data ranged from 200 to 900 (in multiples of 100), and the values for the other three provinces were between 10 and 30 units below this maximum value. Six Matplotlib color scales ('Reds', 'Greys', 'Purples', 'Blues', 'Greens', 'Oranges') were each used once per maximum value. **These scales exhibited monotonic and approximately linear variation in lightness (*L*\*). Monochromatic sequential scales were used for simplicity, avoiding additional differences between conditions, such as the relative amounts of different hues (multi-hue scales) or midpoints' positions (diverging scales).** @tbl-colors **shows the start and end colors in CIEL\*a\*b\* space, using CIE standard illuminant D65.**
 
 For each item, a 'mappable' object defined the mapping between numerical values and colors for both truncated and extended color legends. The lightest color in the scale was mapped to zero and the darkest color to double the maximum value. This range was employed in the extended color legend. The truncated color legend, on the other hand, terminated at the maximum value in the data, so the range was halved (but the mapping between numerical values and colors was retained). Where numerical labels were present, an identical number of labels (between six and ten) appeared on both versions of a color legend. Tick marks were absent from all color legends.
 
@@ -538,15 +538,16 @@ Lab <- read_csv("Lab.csv") %>%
 #| include: true
 #| tbl-cap: "CIELab Values for Color Legends' Start and End Colors"
 #| output: asis
+# kableExtra might the reason it's not possible to write CIEL*a*b* in caption
 kable(Lab, digits = 2,
       col.names = c("Color Scale", 
                     "Range",
-                    "L",
-                    "a",
-                    "b",
-                    "L",
-                    "a",
-                    "b")) %>% 
+                    "L*",
+                    "a*",
+                    "b*",
+                    "L*",
+                    "a*",
+                    "b*")) %>% 
   kable_styling(font_size = 8) %>% 
   add_header_above(header = c(" " = 2, "Start Color" = 3, "End Color" = 3))
 ```
