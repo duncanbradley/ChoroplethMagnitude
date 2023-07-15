@@ -437,7 +437,7 @@ img1 / img2 + plot_layout()
 
 ## Participants
 
-We recruited participants using prolific.co. The experiment was advertised to users with English language fluency, normal or corrected-to-normal vision, and no experience of color deficiency, who had previously participated in more than 100 studies on Prolific. Participants were paid £3.50. Ethical approval was granted by our The University of Manchester's Division of Neuroscience and Experimental Psychology Ethics Committee (Ref. 2022-11115-23778).
+We recruited participants using prolific.co. The experiment was advertised to users with English language fluency, normal or corrected-to-normal vision, and no experience of color deficiency, who had previously participated in more than 100 studies on Prolific. Participants were paid £3.50. Ethical approval was granted by The University of Manchester's Division of Neuroscience and Experimental Psychology Ethics Committee (Ref. 2022-11115-23778).
 
 In our pre-registration, we planned to exclude participants who failed more than one attention check question, in order to exclude those who were not sufficiently engaged in the task. However, when many more participants than expected failed more than one attention check question, this criteria was deemed too stringent and we instead awarded payment to all participants who returned data, regardless of their responses to attention check questions. Consequently, due to practical constraints, we were unable to obtain a sample which met our originally-specified sample size (N = 160) and our pre-registered inclusion criteria. Therefore, we terminated data collection once the sample of those who satisfied the attention check criteria was balanced across all four Latin-squaring lists (N = 100; 25 participants per list). We used this sample for our main analysis. As a compromise for the reduction in experimental power, we also demonstrate below that the pattern of effects is largely the same when analyzing the entire dataset (those who satisfied attention check criteria and those who did not; N = 165). In Section 5, we discuss a possible reason for the higher-than-expected rate of incorrect responses to attention check questions. Demographic information is shown in @tbl-demographics.
 
@@ -483,10 +483,10 @@ demo_table <- inner_join(gender, age, by = "sample_type") %>%
 #| label: tbl-demographics
 #| include: true
 #| tbl-cap: Demographic Information
+#| output: asis
 #generate demographic table
-add_header_above(kable(demo_table, "latex",
+kable(demo_table, "html", # change to "latex" for pdf?
                        digits = 1,
-                       booktabs = TRUE,
                        col.names = c("Sample", 
                                      "Male (%)",
                                      "Female (%)",
@@ -495,8 +495,9 @@ add_header_above(kable(demo_table, "latex",
                                      "SD",
                                      "Mean",
                                      "SD",
-                                     "High School\nor Above (%)")) %>% kable_styling(font_size = 8), 
-                 header = c(" " = 1, "Gender" = 3, "Age" = 2, "Graph Literacy" = 2, "Education" = 1))
+                                     "High School\nor Above (%)")) %>% 
+  kable_styling(font_size = 8) %>% 
+  add_header_above(header = c(" " = 1, "Gender" = 3, "Age" = 2, "Graph Literacy" = 2, "Education" = 1))
 ```
 
 ## Procedure
@@ -515,9 +516,40 @@ Materials were generated using Python (version 3.9.12). Matplotlib (version 3.5.
 
 Each visualization contained a unique combination of four neighboring Chinese provinces (except the six attention check items, which employed six existing combinations used in the experimental items). China was chosen to reduce the potential impact of prior knowledge, as Prolific's participants tend to be located outside China. However, the choice of country was not disclosed to participants and regions were not labeled. The pollution data used were entirely fictitious, as were the 'standardized units' used to present the data.
 
-The maximum value in the plotted data ranged from 200 to 900 (in multiples of 100), and the values for the other three provinces were between 10 and 30 units below this maximum value. Six Matplotlib color scales ('Reds', 'Greys', 'Purples', 'Blues', 'Greens', 'Oranges') were each used once per maximum value. **Sequential scales were used for simplicity, avoiding additional differences between conditions, such as the relative amounts of different hues or midpoints' positions.**
+The maximum value in the plotted data ranged from 200 to 900 (in multiples of 100), and the values for the other three provinces were between 10 and 30 units below this maximum value. Six Matplotlib color scales ('Reds', 'Greys', 'Purples', 'Blues', 'Greens', 'Oranges') were each used once per maximum value. **Sequential scales were used for simplicity, avoiding additional differences between conditions, such as the relative amounts of different hues or midpoints' positions. @tbl-colors shows the colors**
 
 For each item, a 'mappable' object defined the mapping between numerical values and colors for both truncated and extended color legends. The lightest color in the scale was mapped to zero and the darkest color to double the maximum value. This range was employed in the extended color legend. The truncated color legend, on the other hand, terminated at the maximum value in the data, so the range was halved (but the mapping between numerical values and colors was retained). Where numerical labels were present, an identical number of labels (between six and ten) appeared on both versions of a color legend. Tick marks were absent from all color legends.
+
+```{r}
+#| label: prepare-colors
+Lab <- read_csv("Lab.csv") %>%
+  select(-`...1`) %>%
+  pivot_wider(names_from = "position",
+              values_from = c('L', 'a', 'b'),
+              names_glue = "{position}_{.value}") %>%
+  select(colorname, length, starts_with("first_"), starts_with("last_"), everything()) %>%
+  mutate(length = case_match(length,
+                             "trunc" ~ "Truncated",
+                             "extend" ~ "Extended"))
+```
+
+```{r}
+#| label: tbl-colors
+#| include: true
+#| tbl-cap: "CIELab Values for Color Legends' Start and End Colors"
+#| output: asis
+kable(Lab, digits = 2,
+      col.names = c("Color Scale", 
+                    "Range",
+                    "L",
+                    "a",
+                    "b",
+                    "L",
+                    "a",
+                    "b")) %>% 
+  kable_styling(font_size = 8) %>% 
+  add_header_above(header = c(" " = 2, "Start Color" = 3, "End Color" = 3))
+```
 
 # Analysis
 
