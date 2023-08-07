@@ -32,7 +32,7 @@ contributes:
         - interact.cls
         - orcidlink.sty
       include-in-header: 
-        - highlight.tex
+        - partials/highlight.tex
     html:
       # define default configuration for the html version of your format
       toc: true
