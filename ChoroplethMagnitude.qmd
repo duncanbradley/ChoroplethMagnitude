@@ -5,9 +5,13 @@ knitr:
   opts_chunk: 
     cache_comments: false
   
+#format:
+#  pdf: default
+#  tandf-pdf:
+#    keep-tex: true  
+    
 format:
-  pdf: default
-  tandf-pdf:
+  docx:
     keep-tex: true   
     
 prefer-html: true
@@ -442,7 +446,7 @@ img1 / img2 + plot_layout()
 
 We recruited participants using prolific.co. The experiment was advertised to users with English language fluency, normal or corrected-to-normal vision, and no experience of color deficiency, who had previously participated in more than 100 studies on Prolific. Participants were paid £3.50. Ethical approval was granted by The University of Manchester's Division of Neuroscience and Experimental Psychology Ethics Committee (Ref. 2022-11115-23778).
 
-In our pre-registration, we planned to exclude participants who failed more than one attention check question, in order to exclude those who were not sufficiently engaged in the task. However, when many more participants than expected failed more than one attention check question, this criteria was deemed too stringent and we instead awarded payment to all participants who returned data, regardless of their responses to attention check questions. Consequently, due to practical constraints, we were unable to obtain a sample which met our originally-specified sample size (N = 160) and our pre-registered inclusion criteria. Therefore, we terminated data collection once the sample of those who satisfied the attention check criteria was balanced across all four Latin-squaring lists (N = 100; 25 participants per list). We used this sample for our main analysis. As a compromise for the reduction in experimental power, we also demonstrate below that the pattern of effects is largely the same when analyzing the entire dataset (those who satisfied attention check criteria and those who did not; N = 165). In Section 5, we discuss a possible reason for the higher-than-expected rate of incorrect responses to attention check questions. Demographic information is shown in @tbl-demographics.
+In our pre-registration, we planned to exclude participants who failed more than one attention check question, in order to exclude those who were not sufficiently engaged in the task. However, when many more participants than expected failed more than one attention check question, this criteria was deemed too stringent and we instead awarded payment to all participants who returned data, regardless of their responses to attention check questions. Consequently, due to practical constraints, we were unable to obtain a sample which met our originally-specified sample size (N = 160) and our pre-registered inclusion criteria. Therefore, we terminated data collection once the sample of those who satisfied the attention check criteria was balanced across all four Latin-squaring lists (N = 100; 25 participants per list). We used this sample for our main analysis. As a compromise for the reduction in experimental power, we also demonstrate below that the pattern of effects is largely the same when analyzing the entire dataset (those who satisfied attention check criteria and those who did not; N = 165). In the Discussion, we discuss a possible reason for the higher-than-expected rate of incorrect responses to attention check questions. Demographic information is shown in @tbl-demographics.
 
 ```{r}
 #| label: prepare-demographics
@@ -652,7 +656,7 @@ anova_results(test_label, full_main)
 anova_results(test_int, full_int)
 ```
 
-Linear mixed-effects modelling revealed that urgency was rated as significantly higher when the color legend had a truncated range (its upper bound was equal to the maximum value in the dataset) compared to when the color legend had an extended range (its upper bound was equal to double the maximum value): $\chi^2$(`r in_paren(test_range.Df)`) = `r printnum(test_range.Chi)`, p `r printp(test_range.p, add_equals = TRUE)`, $\eta_p^2$ `r print_es(full_main.eta.range)`.
+Linear mixed-effects modeling revealed that urgency was rated as significantly higher when the color legend had a truncated range (its upper bound was equal to the maximum value in the dataset) compared to when the color legend had an extended range (its upper bound was equal to double the maximum value): $\chi^2$(`r in_paren(test_range.Df)`) = `r printnum(test_range.Chi)`, p `r printp(test_range.p, add_equals = TRUE)`, $\eta_p^2$ `r print_es(full_main.eta.range)`.
 
 Ratings were not significantly different when numerical labels were present, compared to when they were absent: $\chi^2$(`r in_paren(test_label.Df)`) = `r printnum(test_label.Chi)`, p `r printp(test_label.p, add_equals = TRUE)`, $\eta_p^2$ `r print_es(full_main.eta.label)`.
 
@@ -860,7 +864,7 @@ The same pattern of results was observed when accounting for differences in data
 
 ## Exploratory Analysis
 
-Our pre-registered analysis did not detect an effect of the presence of numerical values on urgency ratings. However, a more fine-grained analysis can explore the role of numerical labels with greater sensitivity. This exploratory analysis examines whether urgency ratings are influenced by the actual numerical values displayed. We systematically varied the maximum value displayed in each map, which ranged from 200 to 900. Other plotted values were defined in relation to this value: between 10 and 30 units less than the maximum value. Modelling the effect of different maximum values on ratings will reveal whether judgments were informed by the numerical values displayed.
+Our pre-registered analysis did not detect an effect of the presence of numerical values on urgency ratings. However, a more fine-grained analysis can explore the role of numerical labels with greater sensitivity. This exploratory analysis examines whether urgency ratings are influenced by the actual numerical values displayed. We systematically varied the maximum value displayed in each map, which ranged from 200 to 900. Other plotted values were defined in relation to this value: between 10 and 30 units less than the maximum value. modeling the effect of different maximum values on ratings will reveal whether judgments were informed by the numerical values displayed.
 
 ```{r}
 #| label: exploratory-part1
