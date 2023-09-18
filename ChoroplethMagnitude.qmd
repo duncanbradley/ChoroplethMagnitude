@@ -1,18 +1,17 @@
 ---
 title: "Choropleth Maps Can Convey Absolute Magnitude Through the Range of the Accompanying Color Legend"
 
+params: 
+  eval_models: false
+
 knitr:
   opts_chunk: 
     cache_comments: false
-  
-#format:
-#  pdf: default
-#  tandf-pdf:
-#    keep-tex: true  
-    
+
 format:
-  docx:
-    keep-tex: true   
+  pdf: default
+  tandf-pdf:
+    keep-tex: true
     
 prefer-html: true
 
@@ -91,6 +90,15 @@ library(kableExtra)
 library(emmeans)
 library(knitr)
 library(effectsize)
+library(qwraps2)
+library(shiny)
+library(markdown)
+```
+
+```{r}
+#| label: lazyload-cache
+if (!params$eval_models){
+lazyload_cache_dir('ChoroplethMagnitude_cache/pdf')}
 ```
 
 ```{r}
@@ -629,7 +637,8 @@ ggplot(aes(x = slider.response, y = range)) +
 
 ```{r}
 #| label: part1
-#| cache: true 
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models 
 # generating the models for those who satisfied the pre-registered attention check criteria
 full_main <- buildmer(slider.response ~ range + label +
                          (1 + range*label | participant) + 
@@ -646,7 +655,8 @@ full_int <- buildmer(slider.response ~ range * label +
 
 ```{r}
 #| label: part1-tests
-#| cache: true 
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 test_range <- lmer(comparison(full_main, fixed = "label"), data = passed)
 test_label <- lmer(comparison(full_main, fixed = "range"), data = passed)
 test_int <- lmer(comparison(full_int, fixed = "range + label"), data = passed)
@@ -666,7 +676,8 @@ There was no interaction between color legend range and numerical labels: $\chi^
 
 ```{r}
 #| label: part1-lit
-#| cache: TRUE
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 full_main_lit <- buildmer(slider.response ~ range + label + literacy +
                          (1 + range*label | participant) +
                          (1 + range*label | item_no),
@@ -682,7 +693,8 @@ full_int_lit <- buildmer(slider.response ~ range * label + literacy +
 
 ```{r}
 #| label: part1-lit-tests
-#| cache: TRUE
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 test_range_lit <- lmer(comparison(full_main_lit, fixed = "label + literacy"), data = passed)
 test_label_lit <- lmer(comparison(full_main_lit, fixed = "range + literacy "), data = passed)
 test_int_lit <- lmer(comparison(full_int_lit, fixed = "range + label + literacy"), data = passed)
@@ -702,7 +714,8 @@ The above analysis was conducted using data from the 100 participants who satisf
 
 ```{r}
 #| label: part2
-#| cache: TRUE
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 # generating models for entire set of participants
 # BOTH those who satisfied the pre-registered attention check criteria and those who did not
 both_full_main <- buildmer(slider.response ~ range + label +
@@ -720,7 +733,8 @@ both_full_int <- buildmer(slider.response ~ range * label +
 
 ```{r}
 #| label: part2-tests
-#| cache: TRUE
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 both_test_range <- lmer(comparison(both_full_main, fixed = "label"), data = both)
 both_test_label <- lmer(comparison(both_full_main, fixed = "range"), data = both)
 both_test_int <- lmer(comparison(both_full_int, fixed = "range + label"), data = both)
@@ -836,7 +850,10 @@ pp / bp  +
 
 ### Data Visualization Literacy
 
-```{r part2-lit, warning=FALSE, message=FALSE, echo=FALSE, results=FALSE, cache=TRUE}
+```{r} 
+#| label: part2-lit
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 both_full_main_lit <- buildmer(slider.response ~ range + label + literacy +
                          (1 + range*label | participant) +
                          (1 + range*label | item_no),
@@ -850,7 +867,10 @@ both_full_int_lit <- buildmer(slider.response ~ range * label + literacy +
                        data = both)
 ```
 
-```{r part2-lit-tests, warning=FALSE, message=FALSE, echo=FALSE, results=FALSE, cache=TRUE}
+```{r}
+#| label: part2-lit-tests
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 both_test_range_lit <- lmer(comparison(both_full_main_lit, fixed = "label + literacy"), data = both)
 both_test_label_lit <- lmer(comparison(both_full_main_lit, fixed = "range + literacy"), data = both)
 both_test_int_lit <- lmer(comparison(both_full_int_lit, fixed = "range + label + literacy"), data = both)
@@ -868,7 +888,8 @@ Our pre-registered analysis did not detect an effect of the presence of numerica
 
 ```{r}
 #| label: exploratory-part1
-#| cache: true
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 # with two factors that could explain variance in magnitude ratings
 full_max_value_pres1 <- buildmer(slider.response ~ max_value + range + (1 + range | item_no) + (1 + max_value + range | participant), buildmerControl=list(include='slider.response ~ max_value + range'), data = passed %>% filter(label == "present"))
 #but confound
@@ -879,7 +900,8 @@ full_max_value_int1 <- buildmer(slider.response ~ max_value * label + range + (1
 
 ```{r}
 #| label: exploratory-part1-tests
-#| cache: true
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 test_max_value_pres1 <- lmer(comparison(full_max_value_pres1, fixed = "range"), data = passed %>% filter(label == "present"))
 
 test_max_value_abs1 <- lmer(comparison(full_max_value_abs1, fixed = "range"), data = passed %>% filter(label == "absent"))
@@ -897,7 +919,8 @@ This suggests that the numerical labels themselves were not responsible for the 
 
 ```{r}
 #| label: exploratory-part2
-#| cache: true
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 # with two factors that could explain variance in magnitude ratings
 full_max_value_pres2 <- buildmer(slider.response ~ max_value + range + (1 + range | item_no) + (1 + max_value + range | participant), buildmerControl=list(include='slider.response ~ max_value + range'), data = both %>% filter(label == "present"))
 #but confound
@@ -908,7 +931,8 @@ full_max_value_int2 <- buildmer(slider.response ~ max_value * label + range + (1
 
 ```{r}
 #| label: exploratory-part2-tests
-#| cache: true
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
 test_max_value_pres2 <- lmer(comparison(full_max_value_pres2, fixed = "range"), data = both %>% filter(label == "present"))
 
 test_max_value_abs2 <- lmer(comparison(full_max_value_abs2, fixed = "range"), data = both %>% filter(label == "absent"))
