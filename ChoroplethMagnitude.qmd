@@ -523,6 +523,7 @@ The experiment was programmed using PsychoPy [@peirce_psychopy2_2019, version 20
 #| label: fig-example-trial
 #| include: true
 #| fig-cap: An example of a single experiment trial, showing a choropleth map with a truncated color legend, plus a response marker on the visual analogue scale.
+#| fig-alt: "A screenshot with a choropleth map on a white square, against a grey background. The choropleth map shows four shades of red, and the horizontal colour legend starts with a very light pink, and extends to a red, equivalent to the darkest colour in the map. The text above the map reads 'This map shows the levels of a certain type of pollution, in four geographic regions:' and the text below reads 'How urgently should pollution levels in these regions be addressed?'. Below this question is a sliding scale with 'Not very urgently' as the left anchor and 'Very urgently' as the right anchor. A triangle marker close to the rightmost side of the scale. The text at the very bottom reads 'Press the spacebar to continue when you have made your response.'"
 knitr::include_graphics("examples/example-trial.png")
 ```
 
@@ -544,7 +545,7 @@ For each item, a 'mappable' object defined the mapping between numerical values 
 
 ```{r}
 #| label: prepare-colors
-Lab <- read_csv("Lab.csv") %>%
+Lab <- read_csv("data/Lab.csv") %>%
   select(-`...1`) %>%
   pivot_wider(names_from = "position",
               values_from = c('L', 'a', 'b'),
@@ -624,7 +625,7 @@ ggplot(aes(x = slider.response, y = range)) +
                      breaks = c(0,1),
                      minor_breaks = c(),
     position = "bottom") +
-  labs(title = "Distribution of Urgency Ratings, by Color Legend Range",
+  labs(title = "Distribution of Urgency Ratings, by Colour Legend Range",
        subtitle = "Histograms, Boxplots, and Raw Data",
        x = NULL,
        y = NULL) +
@@ -783,8 +784,8 @@ There was a significant interaction between color legend range and numerical lab
 #| fig-cap: Mean urgency ratings showing the interaction between color legend range and numerical label presence, displayed separately for the different samples of participants. Error bars show 95% confidence intervals around the means.
 ##| fig-alt = "A visualization with eight horizontal axes. The #top four are labeled 'Satisfied Attention Check Criteria (N = #100)'. Of these, the top two are labeled 'Truncated Upper #Bound'. These have means and error bars close to the right hand #side of the axis, with the 'Labels Absent' condition very #slightly further to the right than the 'Labels Present' #condition. The means and error bars for both 'Extended Upper #Bound' conditions are near the center of the axis. This entire #pattern of error bars in the top four axes is replicated below, #in the bottom four axes labeled 'All Participants (N = 165)'"
 # creating a named vector for range facet labels
-ranges_labs <- c("Extended Color Legend Range", 
-                 "Truncated Color Legend Range")
+ranges_labs <- c("Extended Colour Legend Range", 
+                 "Truncated Colour Legend Range")
 names(ranges_labs) <- c("extend", "trunc")
 
 pp <- passed %>%
@@ -844,7 +845,7 @@ bp <- both %>%
 
 pp / bp  + 
   plot_annotation(title =
-                    "Urgency Ratings: Color Legend Range x Numerical Label Interaction",
+                    "Urgency Ratings: Colour Legend Range x Numerical Label Interaction",
                   subtitle = "Shown separately for participants who satisfied pre-registered attention check criteria,\nand all participants.")
 ```
 
