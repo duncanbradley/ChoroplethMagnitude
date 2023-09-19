@@ -12,7 +12,7 @@ We provide resources for re-creating the computational environment (R version, p
 3. Rename the local repository `choroplethmagnitude` (Docker won't accept uppercase letters in the directory name)
 4. Use the command line to navigate to the repository
 5. Type `docker build -t choroplethmagnitude .` (where `choroplethmagnitude` is the repository name). This builds the Docker image.
-6. Type `docker run --rm -p 8787:8787 -e PASSWORD=password choroplethmagnitude`. This launches the Docker container.
+6. Type `docker run --rm -p 8787:8787 -e PASSWORD=password choroplethmagnitude` to launch the Docker container.
 7. In your browser's address bar, type `localhost:8787`
 8. Enter `rstudio` as the username and `password` as the password. 
 9. Open `ChoroplethMagnitude.qmd` and press Render to generate `ChoroplethMagnitude.pdf`
